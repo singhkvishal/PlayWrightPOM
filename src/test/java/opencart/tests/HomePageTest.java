@@ -17,7 +17,7 @@ public class HomePageTest extends baseTest {
 	@Test
 	public void homePageURLTest() {
 		String actualURL = homePage.getHomePageURL();
-		Assert.assertEquals(actualURL, "https://naveenautomationlabs.com/opencart/");
+		Assert.assertEquals(actualURL, prop.getProperty("url"));
 	}
 
 	@DataProvider

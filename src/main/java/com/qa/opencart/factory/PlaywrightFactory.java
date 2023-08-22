@@ -21,16 +21,17 @@ public class PlaywrightFactory {
 	public Page initBrowser(Properties prop) {
 
 		String browserName = prop.getProperty("browser").trim();
+		boolean isHeadLess=Boolean.parseBoolean(prop.getProperty("headless"));
 
 		playwright = Playwright.create();
 
 		switch (browserName.toLowerCase()) {
 			case "chromium":
-				browser=playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(false));
+				browser=playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(isHeadLess));
 				break;
 
 			case "chrome":
-				browser=playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(false));
+				browser=playwright.chromium().launch(new BrowserType.LaunchOptions().setChannel("chrome").setHeadless(isHeadLess));
 				break;
 
 			default:
