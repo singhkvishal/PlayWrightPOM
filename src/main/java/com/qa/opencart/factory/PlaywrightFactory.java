@@ -20,6 +20,10 @@ public class PlaywrightFactory {
 	}
 	public Page initBrowser(Properties prop) {
 
+		 ThreadLocal<Browser> tbrowser = new ThreadLocal<>();
+		ThreadLocal<Browser> tPage = new ThreadLocal<>();
+
+
 		String browserName = prop.getProperty("browser").trim();
 		boolean isHeadLess=Boolean.parseBoolean(prop.getProperty("headless"));
 
@@ -27,7 +31,7 @@ public class PlaywrightFactory {
 
 		switch (browserName.toLowerCase()) {
 			case "chromium":
-				browser=playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(isHeadLess));
+				tbrowser=tbrowser.set(playwright.chromium().launch(new BrowserType.LaunchOptions().setHeadless(isHeadLess)));
 				break;
 
 			case "chrome":

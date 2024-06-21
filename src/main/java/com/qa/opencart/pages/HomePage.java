@@ -12,7 +12,7 @@ public class HomePage {
 	private String myAccountLink = "a[title='My Account']";
 
 	// 2. page constructor:
-	public HomePage(Page page) {
+	public  HomePage(Page page) {
 		this.page = page;
 	}
 
